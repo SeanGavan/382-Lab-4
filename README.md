@@ -1,5 +1,9 @@
 382-Lab-4
 =========
+
+Data types
+----------
+
 | Size       | Signed/Unsigned | Type | Min Value | Max Value |
 | ---------- | --------------- | ---- | --------- | --------- |
 |   8-bit    | unsigned        | unsigned char, bool, _Bool | 0 | 255 |
@@ -21,6 +25,9 @@
 | sint32 | signed 32-bit value   | typedef signed long sint32;        | 
 | int64  | unsigned 64-bit value | typedef unsigned long long int64;  | 
 | sint64 | signed 64-bit value   | typedef signed long long sint64;   |
+
+Calling/Return Convention
+-------------------------
 
 | Iteration  | a   | b   | c   | d   | e   |
 | ---------- | --- | --- | --- | --- | --- |
