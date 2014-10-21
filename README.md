@@ -29,3 +29,13 @@
 | 3rd        | 14 | 15 | 14 | 13 | 14 |
 | 4th        | 20 | 21 | 20 | 19 | 20 |
 | 5th        | 26 | 27 | 26 | 25 | 26 |
+
+| Parameter  | Value Sought   |
+| ---------- | -------------- |
+| Starting address of func | c0ba |
+| Ending address of func   | c0c6 | 
+| Register holding w       | R12 | 
+| Register holding x       | R13 |
+| Register holding y       | R14 | 
+| Register holding z       | R15 | 
+| Register holding return value       | R12 | 
