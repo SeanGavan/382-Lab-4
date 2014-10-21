@@ -1,8 +1,8 @@
-382-Lab-4
-=========
+# 382-Lab-4
 
-Data types
-----------
+## Prelab
+
+### Data types
 
 | Size       | Signed/Unsigned | Type | Min Value | Max Value |
 | ---------- | --------------- | ---- | --------- | --------- |
@@ -26,8 +26,7 @@ Data types
 | int64  | unsigned 64-bit value | typedef unsigned long long int64;  | 
 | sint64 | signed 64-bit value   | typedef signed long long sint64;   |
 
-Calling/Return Convention
--------------------------
+### Calling/Return Convention
 
 | Iteration  | a   | b   | c   | d   | e   |
 | ---------- | --- | --- | --- | --- | --- |
@@ -46,3 +45,15 @@ Calling/Return Convention
 | Register holding y       | R14 | 
 | Register holding z       | R15 | 
 | Register holding return value       | R12 | 
+
+### Cross language build constructs
+
+#### What is the role of the extern directive in a .c file?  
+
+`extern` tells the .c file that the variable is defined elsewhere. The compiler asks the global symbol table what the  
+matching global variable means (as defined in the .asm file as a `.global` variable).
+
+#### What is the role of the .global directive in an .asm file (used in lines 28-32)?  
+
+`.global` defines a variable as an entry into the global symbol table. When the .c file uses `extern`, this is where  
+the compiler looks to know what to do with the variable
