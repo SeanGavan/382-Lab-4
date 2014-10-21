@@ -22,8 +22,8 @@
 | int64  | unsigned 64-bit value | typedef unsigned long long int64;  | 
 | sint64 | signed 64-bit value   | typedef signed long long sint64;   |
 
-| Iteration  | a | b | c | d | e |
-| ---------- | - | - | - | - | - |
+| Iteration  | a   | b   | c   | d   | e   |
+| ---------- | --- | --- | --- | --- | --- |
 | 1st        | 2 | 2 | 3 | 4 | 2 |
 | 2nd        | 8 | 9 | 8 | 7 | 8 |
 | 3rd        | 14 | 15 | 14 | 13 | 14 |
