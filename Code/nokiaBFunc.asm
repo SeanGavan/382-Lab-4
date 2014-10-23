@@ -23,9 +23,9 @@ STE2007_POWERCTRL_ALL_ON:		.equ	0x07
 STE2007_DISPLAYNORMAL:			.equ	0xA6
 STE2007_DISPLAYON:				.equ	0xAF
 
- 	.text								; BOILERPLATE	Assemble into program memory
-	.retain								; BOILERPLATE	Override ELF conditional linking and retain current section
-	.retainrefs							; BOILERPLATE	Retain any sections that have references to current section
+ 	.text					; BOILERPLATE	Assemble into program memory
+	.retain					; BOILERPLATE	Override ELF conditional linking and retain current section
+	.retainrefs				; BOILERPLATE	Retain any sections that have references to current section
 	.global init
 	.global initNokia
 	.global clearDisplay
@@ -163,7 +163,7 @@ cmd:
 clock:
 	bis.b	#LCD1202_SCLK_PIN, &P1OUT						; LCD1202_CLOCK		positive edge
 	nop
-	bic.b	#LCD1202_SCLK_PIN, &P1OUT						;					negative edge
+	bic.b	#LCD1202_SCLK_PIN, &P1OUT						;	negative edge
 
 	bis.b	#LCD1202_SCLK_PIN | LCD1202_MOSI_PIN, &P1SEL	; LCD1202_ENABLE_HARDWARE_SPI;
 	bis.b	#LCD1202_SCLK_PIN | LCD1202_MOSI_PIN, &P1SEL2	;
@@ -172,7 +172,7 @@ clock:
 
 pollSPI:
 	bit.b	#UCBUSY, &UCB0STAT
-	jz		pollSPI											; while (UCB0STAT & UCBUSY);
+	jz		pollSPI							; while (UCB0STAT & UCBUSY);
 
 	bis.b	#LCD1202_CS_PIN, &P1OUT							; LCD1202_DESELECT
 
@@ -301,7 +301,7 @@ chkNextDD:
 		jge		chkLowerDD
 
 		mov		R12, R5			; copy the height array pointer so that we can call drawBlock
-		clr		R13				; Draw columns (indexed by R13 in drawBlock) from left to right on the display
+		clr		R13		; Draw columns (indexed by R13 in drawBlock) from left to right on the display
 
 colDD:							; For each column, draw blocks from bottom to top
 		clr.w	R6
