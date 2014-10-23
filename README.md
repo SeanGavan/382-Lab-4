@@ -57,3 +57,17 @@ matching global variable means (as defined in the .asm file as a `.global` varia
 
 `.global` defines a variable as an entry into the global symbol table. When the .c file uses `extern`, this is where  
 the compiler looks to know what to do with the variable
+
+## Lab Report
+### Objectives
+The objectives of Lab 4 were to expand our C coding skills by combining C language with assembly language. This was done by first creating an etch-a-sketch program using the LCD display. Then, a Pong game was created to use previous knowledge gained through Assignment 6.
+## Code
+Code for the lab (lab4.c, nokia.asm, simpleLab4.c) can be found in the "Code" file.
+## Debugging
+Once the BLACK and WHITE colors had been defined in lab4.c, it took some effort to find out how to implement the change in the color itself. My original thought was to have two `if` statements- one after another. This prooved ineffective since the program would run through both; ultimately changing the color from black to white to black. To solve this, I had the second `if` statement changed to an `else if`- this solved the problem.
+## Testing methodology / Results
+I began by first finding out how to make the block drag, or not erase its earlier position after a movement. This only required removing the `clearDisplay` call on line 61 of lab4.c. This allowed me to make a solid line of black squares. Afterward, I needed to change the color of the block to white. This meant I had to define a color variable, what black and white meant, and the implementation for the changing of colors. The colors `BLACK` and `WHITE` were defined to 2 and 3 (respectively), and `color` was initialized to be equal to 2. A button poll was then setup with likeness to the syntax of the movement buttons, but with an `if` and `else if` statement to determine what the color needed to be changed to. The calls to `drawBlock` were then edited to include the `color` variable as well as the `x` and `y` terms for position. This new variable would be sent to `R14` by the method used by CCS. This meant that `R14` had to be pushed onto and popped off of the stack within the `drawBlock` subroutine. A `cmp` instruction was then used between `R14` and `#2` to determine if the block needed to be black (`jz`) or white (`jmp` if the `jz` was untrue). These separate loops `loopBlack` and `loopWhite` would either store `0xFF` or `0x00` as data for a filled (black) 8x8 square or a blank (white) 8x8 space, and then continue with the normal program.
+## Observations and Conclusions
+When the C program needs to know what an `extern` variable is, it asks the assembly file's `global` variable list. If a C function calls an assembly subroutine, the variables passed are stored in `R12`, `R13`, `R14`, `R15`, and the stack.
+## Documentation
+C2C Terragnoli and I collaborated on the required functionality portion of the lab. We explained our ideas to one another for how to define variables and how to implement the color change within the assembly file.
