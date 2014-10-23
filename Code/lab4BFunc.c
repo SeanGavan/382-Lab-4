@@ -1,9 +1,9 @@
 /**
  * Lab4.c - Etch-a-Sketch and Pong
- * Description: Uses nokia.asm to create a bouncing block.
+ * Description: Uses nokiaBFunc.asm to create a bouncing block.
  * Author: C2C Sean Gavan
  * Date Last Editted: 22 Oct. 14
- * Started: 21 Oct. 14
+ * Started: 22 Oct. 14
  * Documentation: None
  */
 #include <msp430g2553.h>
