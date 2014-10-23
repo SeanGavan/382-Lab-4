@@ -1,9 +1,17 @@
+/**
+ * Lab4.c - Etch-a-Sketch and Pong
+ * Author: C2C Sean Gavan
+ * Date Last Editted: 22 Oct. 14
+ * Started: 21 Oct. 14
+ * Documentation: C2C Terragnoli and I discussed ideas on how to define the color
+ * variable, and how to implement changing it.
+ */
 #include <msp430g2553.h>
 
 extern void init();
 extern void initNokia();
 extern void clearDisplay();
-extern void drawBlock(unsigned char row, unsigned char col, unsigned char color);
+extern void drawBlock(unsigned char row, unsigned char col, unsigned char color);	// Additional variable color
 
 #define		TRUE			1
 #define		FALSE			0
@@ -12,12 +20,12 @@ extern void drawBlock(unsigned char row, unsigned char col, unsigned char color)
 #define		AUX_BUTTON		(P2IN & BIT3)
 #define		LEFT_BUTTON		(P2IN & BIT2)
 #define		RIGHT_BUTTON	(P2IN & BIT1)
-#define		BLACK			2
+#define		BLACK			2				// Defined the two colors to change between using arbitrary numbers
 #define		WHITE			3
 
 void main() {
 
-	unsigned char	x, y, button_press, color;
+	unsigned char	x, y, button_press, color;			// Define new variable color
 
 	// === Initialize system ================================================
 	IFG1=0; /* clear interrupt flag1 */
@@ -28,8 +36,8 @@ void main() {
 	init();
 	initNokia();
 	clearDisplay();
-	x=4;		y=4;	color=2;
-	drawBlock(y,x,color);
+	x=4;		y=4;	color=2;			// Initialized new variable color to 2 (BLACK)
+	drawBlock(y,x,color);			// New call with color variable
 
 	while(1) {
 
@@ -49,17 +57,17 @@ void main() {
 				while(RIGHT_BUTTON == 0);
 				if (x<=10) x=x+1;
 				button_press = TRUE;
-			} else if (AUX_BUTTON == 0) {
+			} else if (AUX_BUTTON == 0) {				// Syntax similar to other buttons
 				while(AUX_BUTTON == 0);
-				if (color == BLACK) color = WHITE;
-				else if (color == WHITE) color = BLACK;
+				if (color == BLACK) color = WHITE;		// If BLACK, change to WHITE
+				else if (color == WHITE) color = BLACK;	// Else if WHITE, change to BLACK
 				button_press = TRUE;
 			}
 
 			if (button_press) {
 				button_press = FALSE;
-				//clearDisplay();
-				drawBlock(y,x,color);
+				//clearDisplay();			// Commented out to leave block drawings behind
+				drawBlock(y,x,color);		// New call again
 			}
 		}
 }

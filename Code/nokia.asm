@@ -1,8 +1,10 @@
 ;-------------------------------------------------------------------------------
-;	Chris Coulston
-;	Fall 2014
+;	Sean Gavan
+;	22 Oct. 14
 ;	MSP430G2553
-;	Put some pixels on the Nokia 1202 Diaplsy
+;	Put some pixels on the Nokia 1202 Display
+;	Documentation: C2C Terragnoli and I worked together on the required functionality
+;	and thought of ideas for drawing the different types of blocks.
 ;-------------------------------------------------------------------------------
 	.cdecls C,LIST,"msp430.h"		; BOILERPLATE	Include device header file
 
@@ -348,7 +350,7 @@ drawBlock:
 	push	R5
 	push	R12
 	push	R13
-	push	R14
+	push	R14					; push new register for color variable
 
 	rla.w	R13					; the column address needs multiplied
 	rla.w	R13					; by 8in order to convert it into a
@@ -356,13 +358,13 @@ drawBlock:
 	call	#setAddress			; move cursor to upper left corner of block
 
 	mov		#1, R12
-	cmp		#2, R14
-	jz		loopBlack
-	jmp		loopWhite
-loopBlack:
+	cmp		#2, R14				; is the color variable BLACK?
+	jz		loopBlack			; if so, go here
+	jmp		loopWhite			; if not, go here
+loopBlack:						; draws a filled 8x8 block
 	mov		#0xFF, R13
 	jmp		loopContinue
-loopWhite:
+loopWhite:						; draws a blank 8x8 block
 	mov		#0x00, R13
 	jmp		loopContinue
 loopContinue:
