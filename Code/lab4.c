@@ -1,5 +1,7 @@
 /**
  * Lab4.c - Etch-a-Sketch and Pong
+ * Description: Uses button pressed on the LCD display to call subroutines of
+ * nokia.asm and draw a black or white block.
  * Author: C2C Sean Gavan
  * Date Last Editted: 22 Oct. 14
  * Started: 21 Oct. 14
@@ -20,12 +22,12 @@ extern void drawBlock(unsigned char row, unsigned char col, unsigned char color)
 #define		AUX_BUTTON		(P2IN & BIT3)
 #define		LEFT_BUTTON		(P2IN & BIT2)
 #define		RIGHT_BUTTON	(P2IN & BIT1)
-#define		BLACK			2		// Defined the two colors to change between using arbitrary numbers
+#define		BLACK			2				// Defined the two colors to change between using arbitrary numbers
 #define		WHITE			3
 
 void main() {
 
-	unsigned char	x, y, button_press, color;	// Define new variable color
+	unsigned char	x, y, button_press, color;			// Define new variable color
 
 	// === Initialize system ================================================
 	IFG1=0; /* clear interrupt flag1 */
