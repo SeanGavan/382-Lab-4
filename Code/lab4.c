@@ -20,12 +20,12 @@ extern void drawBlock(unsigned char row, unsigned char col, unsigned char color)
 #define		AUX_BUTTON		(P2IN & BIT3)
 #define		LEFT_BUTTON		(P2IN & BIT2)
 #define		RIGHT_BUTTON	(P2IN & BIT1)
-#define		BLACK			2				// Defined the two colors to change between using arbitrary numbers
+#define		BLACK			2		// Defined the two colors to change between using arbitrary numbers
 #define		WHITE			3
 
 void main() {
 
-	unsigned char	x, y, button_press, color;			// Define new variable color
+	unsigned char	x, y, button_press, color;	// Define new variable color
 
 	// === Initialize system ================================================
 	IFG1=0; /* clear interrupt flag1 */
